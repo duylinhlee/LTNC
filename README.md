@@ -18,4 +18,4 @@ LTNC_08:https://docs.google.com/document/d/1vLAX-s0voUblmiYlTwGtb8fAz1K1hv7zAyvq
 
 LTNC_09: https://docs.google.com/document/d/1H1PDAzsHsypuw4_cJZXfhx-XGQlAvG6ToectWhqfIAU/edit?usp=sharing
 
-LTNC_10:https://docs.google.com/document/d/1H1PDAzsHsypuw4_cJZXfhx-XGQlAvG6ToectWhqfIAU/edit?usp=sharing
+https://github.com/csuet/AdvProg_AY2223
