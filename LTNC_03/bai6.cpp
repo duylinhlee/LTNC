@@ -6,56 +6,51 @@ string ltrim(const string &);
 string rtrim(const string &);
 
 /*
- * Complete the 'palindromeIndex' function below.
+ * Complete the 'caesarCipher' function below.
  *
- * The function is expected to return an INTEGER.
- * The function accepts STRING s as parameter.
+ * The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. STRING s
+ *  2. INTEGER k
  */
 
-bool check(string s) {
-    int l = 0, r = s.length() - 1;
-    while (l <= r) {
-        if (s[l] != s[r]) return false;
-        ++l; --r;
-    }
-    return true;
-}
-
-int palindromeIndex(string s) {
-    int l = 0, r = s.length() - 1;
-    int left = -1, right = -1 ;
-    while (l <= r) {
-        if (s[l] != s[r]) {
-            left = l;
-            right = r;
-            break;
+string caesarCipher(string s, int z) {
+    int size= s.size();
+    int ascii;
+    int k = z%26;
+    for (int i=0; i<size; i++){
+        ascii= (int) s[i];
+        if (ascii<=90-k  && ascii>=65 )ascii +=k;
+        else if (ascii>=97 && ascii<=122-k ){ ascii +=k; }
+        else if (ascii>=90 - k +1 && ascii<=90 ) ascii = ascii -26+ k;
+        else if (ascii>= 122-k+1 && ascii<=122){
+            ascii = ascii -26+ k;
         }
-        ++l; --r;
+        s[i] = (char) ascii;
     }
-    if (l > r) return -1;
-    string tmp_l = s.erase(left, 1);
-    string tmp_r = s.erase(right, 1);
-    if (check(tmp_l)) return left;
-    return right;
+    return s;
 }
 
 int main()
 {
     ofstream fout(getenv("OUTPUT_PATH"));
 
-    string q_temp;
-    getline(cin, q_temp);
+    string n_temp;
+    getline(cin, n_temp);
 
-    int q = stoi(ltrim(rtrim(q_temp)));
+    int n = stoi(ltrim(rtrim(n_temp)));
 
-    for (int q_itr = 0; q_itr < q; q_itr++) {
-        string s;
-        getline(cin, s);
+    string s;
+    getline(cin, s);
 
-        int result = palindromeIndex(s);
+    string k_temp;
+    getline(cin, k_temp);
 
-        fout << result << "\n";
-    }
+    int k = stoi(ltrim(rtrim(k_temp)));
+
+    string result = caesarCipher(s, k);
+
+    fout << result << "\n";
 
     fout.close();
 
@@ -83,4 +78,3 @@ string rtrim(const string &str) {
 
     return s;
 }
-
